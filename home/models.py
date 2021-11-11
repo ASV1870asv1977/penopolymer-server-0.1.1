@@ -24,6 +24,12 @@ class HomePage(Page):
             ('article', ArticleBlock()),
             ('article_two', ArticleBlockTwo()),
             ('article_product', ArticleProductBlock()),
+            ('article_text', RichTextBlock(
+                features=['bold', 'italic', 'enter'],
+                label='Текстовый блок',
+                help_text='Введите текст статьи',
+                icon='form',
+            )),
 
         ],
         # block_counts={
