@@ -1,0 +1,25 @@
+{% load static wagtailcore_tags base_tags %}
+
+
+<div class="container-fluid news-wrapper">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <p class="h2">Календарь мероприятий</p>
+                    {% for block in event_news_snip %}
+                        {{ block.events }}
+                    {% endfor %}
+                    <a href="#" class="news-button">Все мероприятия</a>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <p class="h2">Новости</p>
+                    {% for block in event_news_snip %}
+                        {{ block.news }}
+                    {% endfor %}
+                    <a href="#" class="news-button">Все новости</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

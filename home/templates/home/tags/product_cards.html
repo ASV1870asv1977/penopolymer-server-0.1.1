@@ -1,0 +1,13 @@
+{% load static wagtailimages_tags wagtailcore_tags base_tags %}
+
+
+<div class="container prod-cards">
+    <div class="row">
+        {% for product in product_card %}
+
+            {{ product.card_product }}
+
+        {% endfor %}
+    </div>
+</div>
+

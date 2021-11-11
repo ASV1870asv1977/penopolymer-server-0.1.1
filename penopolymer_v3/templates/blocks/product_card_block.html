@@ -1,0 +1,20 @@
+{% load wagtailimages_tags %}
+
+
+{% image self.img_card_product original as prodimage %}
+<div class="col-md-3 col-sm-6">
+    <div class="prod-card"
+         style="background-image: url({{ prodimage.url }});
+                 display: block;
+                 background-repeat: no-repeat;
+                 background-position: center top;
+                 transition: all .3s;
+                 box-sizing: border-box">
+        <a href="http://127.0.0.1:8000/" class="prod-link">
+            <span>{{ self.name_card_product }}</span>
+            {{ self.description_card_product }}
+        </a>
+    </div>
+</div>
+
+

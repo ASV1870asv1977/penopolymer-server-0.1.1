@@ -1,0 +1,12 @@
+{% load wagtailimages_tags %}
+
+
+<div class="news-item">
+    <div class="news-date">
+        <div class="day">{{ self.event_data }}</div>
+        <div class="month">{{ self.event_month }}</div>
+    </div>
+    <div class="news-content"><a href="#">{{ self.event_name }}</a>
+        <p>{{ self.event_description }}</p>
+    </div>
+</div>

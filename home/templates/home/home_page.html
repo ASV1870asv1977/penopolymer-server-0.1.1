@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags wagtailcore_tags base_tags %}
+
+
+{% block content %}
+
+
+    <div>
+        <article>
+            {% for block in page.body %}
+
+                {% if block.block_type == 'title' %}
+                    <div class="content-wrapper ">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1>{{ block.value }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elif block.block_type == 'heading' %}
+                    <div class="container">
+                        {{ block.value }}
+                    </div>
+                {% elif block.block_type == 'caption' %}
+                    <div class="container">
+                        {{ block.value }}
+                    </div>
+                {% elif block.block_type == 'events_news' %}
+                    {% event_news_tag %}
+                {% elif block.block_type == 'products' %}
+                    {% product_card_tag %}
+                {% elif block.block_type == 'slideshow' %}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="main-slider">
+                                {% for fig in block.value %}
+                                    {% image fig.figure original as bgimage %}
+                                    <div>
+                                        <div class="slide-wrap">
+                                            <div class="slide-pic"
+                                                 style="background-image: url('{{ bgimage.url }}')">
+                                            </div>
+                                            <div class="container">
+                                                <div class="slide-content">
+                                                    <p><span class="slider-head">{{ fig.caption }}</span>
+                                                        {{ fig.description }}
+                                                    </p>
+                                                    <a href="#" class="slide-button">Описание нашей продукции</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% elif block.block_type == 'article' %}
+                    <div class="container-fluid content-wrapper">
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {% image block.value.figure_first original as firstimg %}
+                                        <img src="{{ firstimg.url }}" alt="" class="left-img" width="300">
+                                        <p>{{ block.value.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elif block.block_type == 'article_two' %}
+                    <div class="container-fluid content-wrapper">
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {% image block.value.figure_second original as secondimg %}
+                                        <img src="{{ secondimg.url }}" alt="" class="right-img" width="300">
+                                        <p>{{ block.value.description_second }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elif block.block_type == 'article_product' %}
+                    <div class="container-fluid content-wrapper">
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {% image block.value.image_product original as prodimg %}
+                                        <img src="{{ prodimg.url }}" alt="" class="left-img">
+                                        <p>{{ block.value.description_product }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+            {% endfor %}
+        </article>
+
+    </div>
+
+
+
+
+
+
+    {#    <div class="container-fluid">#}
+    {#        <div class="row">#}
+    {#            <div class="main-slider">#}
+    {#                {% for slide in page.slides.all %}#}
+    {#                    {% image slide.image_slide original as bigimage %}#}
+    {#                    <div>#}
+    {#                        <div class="slide-wrap">#}
+    {#                            <div class="slide-pic" style="background-image: url({{ bigimage.url }})"></div>#}
+    {#                            <div class="container">#}
+    {#                                <div class="slide-content">#}
+    {#                                    <p>#}
+    {#                                        <span class="slider-head">{{ slide.product_name }}</span>#}
+    {#                                        {{ slide.product_description|richtext }}#}
+    {#                                    </p>#}
+    {#                                    <a href="#" class="slide-button">Описание нашей продукции</a>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                {% endfor %}#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+
+
+    {#    <div class="container-fluid about-wrapper">#}
+    {#        <div class="row">#}
+    {#            <div class="container">#}
+    {#                <div class="row">#}
+    {#                    <div class="col-md-12">#}
+    {#                        <div class="about-pic">#}
+    {#                            {% image page.article_image original as image %}#}
+    {#                            <img src="{{ image.url }}" alt="" class="img-responsive"></div>#}
+    {#                        <div class="about-text">#}
+    {#                            <p class="h2">{{ page.article_title }}</p>#}
+    {#                            <p>{{ page.article|richtext }}</p>#}
+    {#                            <a href="#" class="about-button">Подробнее о компании</a>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+{% endblock content %}
+
