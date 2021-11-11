@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
 
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox-thumbs.css' %}">
+
+
     {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
     {% endblock %}
@@ -49,6 +53,9 @@
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/slick.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+
+<script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox-thumbs.js' %}"></script>
 
 {% block extra_js %}
     {# Override this in templates to add extra javascript #}

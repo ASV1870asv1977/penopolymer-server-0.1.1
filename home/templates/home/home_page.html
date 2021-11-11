@@ -110,6 +110,60 @@
                             </div>
                         </div>
                     </div>
+                {% elif block.block_type == 'photo_gallery' %}
+                    {% counter_two 0 as count_two %}
+                    {% counter 0 as count %}
+                    <div class="container-fluid content-wrapper contacts">
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="gallery-wrapper">
+                                            {% if count_two == 1 %}
+                                                <div class="gallery-block row">
+                                                    {% for fig in block.value %}
+                                                        {% if count <= 8 %}
+                                                            {% image fig.figure original as image_gallery %}
+                                                            <div class="col-md-3 col-sm-4">
+                                                                <a class="fancybox" href="{{ image_gallery.url }}"
+                                                                   rel="gallery-1">
+                                                                    <img src="{{ image_gallery.url }}"
+                                                                         class="img-responsive"
+                                                                         alt=""/>
+                                                                </a>
+                                                            </div>
+                                                        {% endif %}
+                                                        {% counter count as count %}
+                                                    {% endfor %}
+                                                </div>
+                                                {% counter_two count_two as count_two %}
+                                            {% endif %}
+                                            {% if count_two == 2 %}
+                                                <div class="gallery-block row collapse" id="collapseExample">
+                                                    {% for fig in block.value %}
+                                                        {% if count > 8 %}
+                                                            {% image fig.figure original as image_gallery %}
+                                                            <div class="col-md-3 col-sm-4">
+                                                                <a class="fancybox" href="{{ image_gallery.url }}"
+                                                                   rel="gallery-1">
+                                                                    <img src="{{ image_gallery.url }}"
+                                                                         class="img-responsive"
+                                                                         alt=""/>
+                                                                </a>
+                                                            </div>
+                                                        {% endif %}
+                                                        {% counter count as count %}
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                            <a class="allphoto" data-toggle="collapse" href="#collapseExample"
+                                               aria-expanded="false" aria-controls="collapseExample">Все фотографии</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
 
 
@@ -118,53 +172,5 @@
 
     </div>
 
-
-
-
-
-
-    {#    <div class="container-fluid">#}
-    {#        <div class="row">#}
-    {#            <div class="main-slider">#}
-    {#                {% for slide in page.slides.all %}#}
-    {#                    {% image slide.image_slide original as bigimage %}#}
-    {#                    <div>#}
-    {#                        <div class="slide-wrap">#}
-    {#                            <div class="slide-pic" style="background-image: url({{ bigimage.url }})"></div>#}
-    {#                            <div class="container">#}
-    {#                                <div class="slide-content">#}
-    {#                                    <p>#}
-    {#                                        <span class="slider-head">{{ slide.product_name }}</span>#}
-    {#                                        {{ slide.product_description|richtext }}#}
-    {#                                    </p>#}
-    {#                                    <a href="#" class="slide-button">Описание нашей продукции</a>#}
-    {#                                </div>#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                {% endfor %}#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
-
-
-    {#    <div class="container-fluid about-wrapper">#}
-    {#        <div class="row">#}
-    {#            <div class="container">#}
-    {#                <div class="row">#}
-    {#                    <div class="col-md-12">#}
-    {#                        <div class="about-pic">#}
-    {#                            {% image page.article_image original as image %}#}
-    {#                            <img src="{{ image.url }}" alt="" class="img-responsive"></div>#}
-    {#                        <div class="about-text">#}
-    {#                            <p class="h2">{{ page.article_title }}</p>#}
-    {#                            <p>{{ page.article|richtext }}</p>#}
-    {#                            <a href="#" class="about-button">Подробнее о компании</a>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
 {% endblock content %}
 

@@ -107,3 +107,16 @@ def top_menu_children(context, parent, calling_page=None):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
+
+@register.simple_tag
+def counter(count):
+    count += 1
+    return count
+
+
+@register.simple_tag
+def counter_two(count_two):
+    count_two += 1
+    return count_two
+

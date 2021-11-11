@@ -67,3 +67,14 @@ class ArticleProductBlock(StructBlock):
     class Meta:
         icon = 'form'
         label = 'Статья о продукции (услуге)'
+
+
+class PhotoGalleryBlock(StructBlock):
+    """Класс для формирования картинки в фотогалерее"""
+
+    figure = ImageChooserBlock(label='Картинка')
+
+    class Meta:
+        icon = 'image'
+        label = 'Изображение фотогалереи'
+

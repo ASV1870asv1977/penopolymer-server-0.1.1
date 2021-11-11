@@ -5,7 +5,8 @@ from wagtail.core.fields import StreamField
 from wagtail.core import blocks
 from wagtail.core.models import Page
 
-from home.blocks import NewsBlock, ProductsBlock, SlideshowBlock, ArticleBlock, ArticleBlockTwo, ArticleProductBlock
+from home.blocks import NewsBlock, ProductsBlock, SlideshowBlock, ArticleBlock, ArticleBlockTwo, ArticleProductBlock, \
+    PhotoGalleryBlock
 
 
 class HomePage(Page):
@@ -30,6 +31,7 @@ class HomePage(Page):
                 help_text='Введите текст статьи',
                 icon='form',
             )),
+            ('photo_gallery', blocks.ListBlock(PhotoGalleryBlock())),
 
         ],
         # block_counts={
